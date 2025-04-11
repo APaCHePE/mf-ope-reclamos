@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mf-navbars": {
+    "mf-operaciones": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -15,11 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/mf-navbars",
+            "outputPath": "dist/mf-operaciones",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.single-spa.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -35,11 +35,12 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "customWebpackConfig": {
+              "path": "extra-webpack.config.js",
+              "libraryName": "mf-operaciones",
+              "libraryTarget": "umd"
+            },
+            "deployUrl": "http://localhost:1002/"
           },
           "configurations": {
             "production": {
@@ -55,24 +56,29 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "outputHashing": "none"
             }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "port": 1002,
+            "disableHostCheck": true
+          },
           "configurations": {
             "production": {
-              "buildTarget": "mf-navbars:build:production"
+              "buildTarget": "mf-operaciones:build:production"
             },
             "development": {
-              "buildTarget": "mf-navbars:build:development"
+              "buildTarget": "mf-operaciones:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -103,5 +109,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "615399ef-4b52-4582-bba8-300055b07d7d"
   }
 }
