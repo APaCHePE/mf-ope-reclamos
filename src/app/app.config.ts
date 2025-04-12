@@ -1,17 +1,46 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideRouter, withHashLocation } from '@angular/router';
+import { provideRouter } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+import Material from '@primeng/themes/material';
+import { getSingleSpaExtraProviders } from 'single-spa-angular';
+import { APP_BASE_HREF } from '@angular/common';
+import { definePreset } from '@primeng/themes';
 
 import { routes } from './app.routes';
-import { APP_BASE_HREF } from '@angular/common';
-import { getSingleSpaExtraProviders } from 'single-spa-angular';
 
+const MyPreset = definePreset(Material, {
+  // isDark: false,
+  semantic: {
+    primary: {
+      50: '{indigo.50}',
+      100: '{indigo.100}',
+      200: '{indigo.200}',
+      300: '{indigo.300}',
+      400: '{indigo.400}',
+      500: '{indigo.500}',
+      600: '{indigo.600}',
+      700: '{indigo.700}',
+      800: '{indigo.800}',
+      900: '{indigo.900}',
+      950: '{indigo.950}',
+    },
+  },
+});
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes,withHashLocation()), 
+  providers: [
+    provideRouter(routes),
     {
       provide: APP_BASE_HREF,
-      useValue: '/'
+      useValue: '/',
     },
+    provideAnimationsAsync(),
     getSingleSpaExtraProviders(),
-  ]
+    providePrimeNG({
+      ripple: true,
+      inputStyle: 'filled',
+      theme: { preset: MyPreset, options: { darkModeSelector: '.app-dark' } },
+    }),
+  ],
 };

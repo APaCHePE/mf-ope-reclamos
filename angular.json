@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mf-operaciones": {
+    "mf-ope-reclamos": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/mf-operaciones",
+            "outputPath": "dist/mf-ope-reclamos",
             "index": "src/index.html",
             "main": "src/main.single-spa.ts",
             "polyfills": [
@@ -37,7 +37,7 @@
             "scripts": [],
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",
-              "libraryName": "mf-operaciones",
+              "libraryName": "mf-ope-reclamos",
               "libraryTarget": "umd"
             },
             "deployUrl": "http://localhost:1002/"
@@ -75,10 +75,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "mf-operaciones:build:production"
+              "buildTarget": "mf-ope-reclamos:build:production"
             },
             "development": {
-              "buildTarget": "mf-operaciones:build:development"
+              "buildTarget": "mf-ope-reclamos:build:development"
             }
           },
           "defaultConfiguration": "development"

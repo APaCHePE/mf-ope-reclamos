@@ -1,5 +1,5 @@
 {
-  "name": "mf-operaciones",
+  "name": "mf-ope-reclamos",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,9 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:mf-operaciones": "node dist/mf-operaciones/server/server.mjs",
-    "build:single-spa:mf-operaciones": "ng build mf-operaciones --configuration production",
-    "serve:single-spa:mf-operaciones": "ng s --project mf-operaciones --disable-host-check --port 1002 --live-reload false"
+    "serve:ssr:mf-ope-reclamos": "node dist/mf-ope-reclamos/server/server.mjs",
+    "build:single-spa:mf-ope-reclamos": "ng build mf-ope-reclamos --configuration production",
+    "serve:single-spa:mf-ope-reclamos": "ng s --project mf-ope-reclamos --disable-host-check --port 1002 --live-reload false"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +23,8 @@
     "@angular/platform-server": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@angular/ssr": "^18.2.18",
+    "@primeng/themes": "^19.0.10",
+    "chart.js": "^4.4.8",
     "express": "^4.18.2",
     "http-server": "^14.1.1",
     "primeicons": "^7.0.0",
